@@ -2,6 +2,7 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>奧多比碰碰樂</title>
 <style>
     body {
@@ -9,7 +10,7 @@
         font-family: "Noto Sans TC", sans-serif;
         text-align: center;
         margin: 0;
-        padding: 20px;
+        padding: 16px 12px 20px;
         color: #f5f5f5;
     }
 
@@ -23,7 +24,7 @@
         margin-bottom: 14px;
     }
 
-    /* 遊戲外框（用之前沒問題的尺寸） */
+    /* 遊戲外框（固定 310px，搭配 JS 座標） */
     #game-container {
         position: relative;
         width: 310px;
@@ -692,7 +693,6 @@
                             moved = true;
 
                             if (isDown) {
-                                // 往下：上面那顆滑下來
                                 tileB.value *= 2;
                                 tileB.row = target;
                                 tileB.col = c;
@@ -701,7 +701,6 @@
                                 score += tileB.value;
                                 newBoard[target][c] = tileB.id;
                             } else {
-                                // 往上：上面那顆往上合成
                                 tileA.value *= 2;
                                 tileA.row = target;
                                 tileA.col = c;
@@ -835,7 +834,7 @@
         // 之後這裡可以改成實際首頁連結
     });
 
-    // 重新開始（底部按鈕，不強迫上傳）
+    // 重新開始（底部按鈕）
     btnRestart.addEventListener('click', () => {
         init();
     });
@@ -864,7 +863,7 @@
         overlayRank.style.display = 'none';
     });
 
-    // 音效開關（目前只有顯示狀態，之後可接實際音效）
+    // 音效開關（目前只有顯示狀態）
     function updateSoundButtonLabel() {
         btnSound.textContent = soundOn ? '🔊 音效：開' : '🔈 音效：關';
     }
